@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: bookstore-service
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+    include:
+      - prod

@@ -1,0 +1,42 @@
+spring:
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:3306/${DATABASE_NAME:BookstoreDB}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_ROOT_PASSWORD:EaseEG@2050}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8082
+
+# Open API
+springdoc:
+  show-actuator: false
+  use-management-port: false
+  api-docs:
+    path: /abdu/api-docs
+  swagger-ui:
+    path: /abdu/swagger-ui.html
+    tagsSorter: alpha
+    operationsSorter: alpha
+    enabled: true
+    csrf:
+      enabled: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
